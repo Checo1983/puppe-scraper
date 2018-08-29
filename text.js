@@ -37,8 +37,20 @@ let transform = async () => {
     o`;
     
     var tmp = '';
-    tmp = TEXT.replace(/\s/g, "").split(/\/o/g);
-    return tmp;
+    var arr = [];
+    tmp = TEXT.substring(27, (TEXT.length-1));
+    tmp = tmp.replace(/\s/g, " ").split(/\°/g);
+    tmp.pop();
+    tmp.forEach(element => {
+        var e = element.split(/\s\s+/g);
+        e.pop();
+        var o = {
+            'match' : e[e.length-2],
+            'league' : e[e.length-1]
+        }
+        arr.push(o);
+    });
+    return arr;
 }
 
 transform().then((value) => {
