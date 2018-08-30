@@ -1,4 +1,4 @@
-let transform = async () => {
+let transform = async (text) => {
     const TEXT = `A L E R T A S A C T | V A s
 
 
@@ -36,19 +36,16 @@ let transform = async () => {
     2b-08-201 8 +0.5 goles 98°/
     o`;
     
-    var tmp = '';
-    var arr = [];
-    tmp = TEXT.substring(27, (TEXT.length-1));
-    tmp = tmp.replace(/\s/g, " ").split(/\°/g);
+    let arr = [];
+    let tmp = TEXT.substring(27, (TEXT.length-1)).replace(/\s/g, " ").split(/\°/g);
     tmp.pop();
     tmp.forEach(element => {
-        var e = element.split(/\s\s+/g);
+        let e = element.split(/\s\s+/g);
         e.pop();
-        var o = {
+        arr.push({
             'match' : e[e.length-2],
             'league' : e[e.length-1]
-        }
-        arr.push(o);
+        });
     });
     return arr;
 }
