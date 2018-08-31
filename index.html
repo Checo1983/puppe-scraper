@@ -53,7 +53,6 @@
 		</div>
     </body>
     <script src="./ocrad.js"></script>
-    <script src="./text.js"></script>
 		<script>
 			function recognize_image(){
 				document.getElementById('transcription').innerText = "(Recognizing...)"
@@ -72,12 +71,23 @@
 						document.getElementById('nose').innerHTML = ''
 						document.getElementById('nose').appendChild(img)
 						OCRAD(img, function(text){
-							document.getElementById('transcription').className = "done"
-							document.getElementById('transcription').innerText = JSON.stringify(transform(text));
+							call_server(text);
 						})
 					}
 				}
 				reader.readAsDataURL(document.getElementById('picker').files[0])
+            }
+            function call_server(text) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById('transcription').className = "done"
+						document.getElementById('transcription').innerText = this.responseText;
+                    }
+                };
+                xhttp.open("POST", "http://localhost:1234/scraper/test", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("text=" + text);
             }
 		</script>	
 </html>

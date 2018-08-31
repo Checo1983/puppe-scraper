@@ -1,0 +1,26 @@
+{
+  "name": "puppeteer_scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jshint": "^2.9.6",
+    "puppeteer": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Checo1983/puppe-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Checo1983/puppe-scraper/issues"
+  },
+  "homepage": "https://github.com/Checo1983/puppe-scraper#readme"
+}

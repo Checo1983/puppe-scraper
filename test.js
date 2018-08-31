@@ -1,7 +1,8 @@
 const puppeteer = require('puppeteer');
 const CREDS = require('./creds');
 
-let scrape = async () => {
+//let scrape = async () => {
+async function scrape() {
     const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'], ignoreHTTPSErrors: true, dumpio: false, headless: false });
     const page = await browser.newPage();
 
@@ -39,6 +40,7 @@ let scrape = async () => {
     return result;
 };
 
-scrape().then((value) => {
+module.exports.scrape = scrape;
+/*scrape().then((value) => {
     console.log(value); // Success!
-});
+});*/
